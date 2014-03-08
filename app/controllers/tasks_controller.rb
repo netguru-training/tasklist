@@ -38,9 +38,14 @@ class TasksController < ApplicationController
 
   def complete
     task = Task.find(params[:id])
-    task.completion = true
-    task.save
+    task.update_attributes(completion: true)
     redirect_to task.list, notice: 'Task marked as completed'
+  end
+
+  def uncomplete
+    task = Task.find(params[:id])
+    task.update_attributes(completion: false)
+    redirect_to task.list, notice: 'Task marked as not completed'
   end
 
   private
