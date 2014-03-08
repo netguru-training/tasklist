@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :login_required, :only => [:create]
+  skip_before_filter :login_required, :only => [:create, :login]
   def create
     auth = request.env["omniauth.auth"]
     user = begin
@@ -10,5 +10,8 @@ class SessionsController < ApplicationController
 
     session[:user_id] = user.id
     redirect_to root_url, :notice => "Signed in!"
+  end
+
+  def login
   end
 end

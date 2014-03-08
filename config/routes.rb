@@ -9,6 +9,7 @@ Tasklist::Application.routes.draw do
   end
 
   get "/auth/:provider/callback" => "sessions#create"
+  get "/login" => "sessions#login"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
