@@ -27,23 +27,27 @@ class ListsController < ApplicationController
   # POST /lists
   def create
     list.save
+    flash[:notice] = "List was successfully created."
     respond_with(list)
   end
 
   # PATCH/PUT /lists/1
   def update
     list.save
+    flash[:notice] = "List was successfully updated."
     respond_with(list)
   end
 
   # DELETE /lists/1
   def destroy
     list.destroy
+    flash[:notice] = "List was successfully destroyed."
     respond_with(list)
   end
 
   def copy_and_paste
     new_list = list_to_copy.copied_list(current_user._id)
+    flash[:notice] = "List was successfully copied."
     redirect_to new_list
   end
 
