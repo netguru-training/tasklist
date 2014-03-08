@@ -11,6 +11,7 @@ gem 'decent_decoration'
 gem 'sass-rails'
 gem 'omniauth'
 gem "omniauth-google-oauth2"
+gem 'draper'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

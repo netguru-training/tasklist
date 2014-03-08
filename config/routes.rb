@@ -4,6 +4,7 @@ Tasklist::Application.routes.draw do
     resources :tasks do
       member do
         post :complete
+        post :uncomplete
       end
     end
 
@@ -14,11 +15,12 @@ Tasklist::Application.routes.draw do
 
   get "/auth/:provider/callback" => "sessions#create"
   get "/login" => "sessions#login"
+  get "/logout" => "sessions#destroy", :as => :logout
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'lists#index'
+  root 'sessions#login'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

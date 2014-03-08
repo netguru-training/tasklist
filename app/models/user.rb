@@ -4,6 +4,13 @@ class User
   field :email, type: String
   field :uid, type: String
 
+  has_many :lists
+  has_many :shares
+
+  def all_lists
+    shared = shared_lists
+  end
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.uid = auth["uid"]
@@ -11,4 +18,10 @@ class User
       user.email = auth["info"]["email"]
     end
   end
+
+  private
+
+    def shared_lists
+      Share.where( user: self.id ).map { |share| share.list }
+    end
 end
