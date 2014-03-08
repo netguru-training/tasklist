@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   respond_to(:html)
   expose(:lists) { List.all }
   expose(:list, attributes: :list_params)
+  expose(:tags) { List.tags_with_weight }
 
   # GET /lists
   def index
@@ -39,6 +40,6 @@ class ListsController < ApplicationController
 
   private
     def list_params
-      params.require(:list).permit(:name, :description)
+      params.require(:list).permit(:name, :description, :tags)
     end
 end

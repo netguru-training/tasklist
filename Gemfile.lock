@@ -96,6 +96,9 @@ GEM
       mongoid (>= 3.0.0.rc)
       rake
       rspec (>= 2.9)
+    mongoid_taggable (1.1.1)
+      mongoid (>= 3)
+      rake
     moped (2.0.0.beta6)
       bson (~> 2.2)
       connection_pool (~> 1.2)
@@ -229,6 +232,7 @@ DEPENDENCIES
   jquery-rails
   mongoid
   mongoid-rspec
+  mongoid_taggable
   omniauth
   omniauth-google-oauth2
   pry
