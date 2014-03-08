@@ -13,5 +13,6 @@ class SessionsController < ApplicationController
   end
 
   def login
+    redirect_to lists_path if logged_in?
   end
 end
