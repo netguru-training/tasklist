@@ -6,6 +6,10 @@ Tasklist::Application.routes.draw do
         post :complete
       end
     end
+
+    member do
+      post :copy_and_paste
+    end
   end
 
   get "/auth/:provider/callback" => "sessions#create"
