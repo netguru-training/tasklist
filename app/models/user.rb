@@ -4,6 +4,8 @@ class User
   field :email, type: String
   field :uid, type: String
 
+  has_many :lists
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.uid = auth["uid"]
