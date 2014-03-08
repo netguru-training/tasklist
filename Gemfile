@@ -10,6 +10,7 @@ gem 'decent_exposure'
 gem 'decent_decoration'
 gem 'sass-rails'
 gem 'omniauth'
+gem "omniauth-google-oauth2"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -25,7 +26,6 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-gem 'decent_exposure'
 
 group :development do
   gem 'html2haml'
