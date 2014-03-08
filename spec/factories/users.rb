@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :user do
-    provider "MyString"
-    uid "MyString"
-    name "MyString"
+    sequence(:uid) { |n| "MyString#{n}" }
+    sequence(:name) { |n| "MyString#{n}" }
+    sequence(:email) { |n| "test#{n}@test.test" }
   end
 end

@@ -22,6 +22,6 @@ class User
   private
 
     def shared_lists
-      Share.where( user: self.id ).map { |share| share.list }
+      Share.where( user_id: self.id ).map { |share| share.list }
     end
 end
