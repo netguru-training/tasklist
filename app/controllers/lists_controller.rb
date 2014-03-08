@@ -51,7 +51,7 @@ class ListsController < ApplicationController
     url = root_url + 'share/' + list.uuid
     respond_to do |format|
       format.html
-      format.json { respond_with { text: url } }
+      format.json { respond_with text: url }
     end
   end
 
