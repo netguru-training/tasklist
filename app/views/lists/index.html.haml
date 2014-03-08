@@ -2,7 +2,7 @@
 
 %h2 tags
 = render partial: "tag_cloud"
-
+%div#popup.hidden
 %table
   %tr
     %th Name
@@ -18,6 +18,7 @@
       %td= link_to 'Show', list
       %td= link_to 'Edit', edit_list_path(list)
       %td= link_to 'Destroy', list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Share', "#", :data => { :list_id => list.id.to_str }
 
 %br
 
