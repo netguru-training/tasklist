@@ -8,4 +8,5 @@ class List
 
   has_many :tasks
   belongs_to :user
+  has_many :shares
 end
