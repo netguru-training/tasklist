@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   respond_to(:html)
-  expose(:lists) { List.all }
-  expose(:list, attributes: :list_params)
+  expose(:lists) { current_user.lists }
+  expose(:list) { find_or_create_list }
   expose(:tags) { List.tags_with_weight }
   expose(:tasks)
 
@@ -40,6 +40,16 @@ class ListsController < ApplicationController
   end
 
   private
+    def find_or_create_list
+      if params[:id]
+        current_user.lists.find(params[:id])
+      elsif params[:list]
+        current_user.lists.new(list_params)
+      else
+        current_user.lists.new
+      end
+    end
+
     def list_params
       params.require(:list).permit(:name, :description, :tags)
     end
