@@ -1,5 +1,7 @@
 Tasklist::Application.routes.draw do
+
   resources :lists
+  resources :tasks
 
   get "/auth/:provider/callback" => "sessions#create"
   # The priority is based upon order of creation: first created -> highest priority.
