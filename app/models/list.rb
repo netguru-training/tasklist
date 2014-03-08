@@ -16,27 +16,23 @@ class List
   has_many :tasks
 
   def copied_list(user)
-    new_list = List.create(self.copy_attributes.merge(user_id: user))
-    new_list.tasks = self.copy_tasks
-    new_list
-  end
-
-
-  def copy_tasks
-  	new_tasks = []
-  	tasks.each do |task|
-      new_tasks << Task.create(task.attributes.slice('completion', 'description'))
-  	end
-  	new_tasks
+    List.create(copy_attributes.merge(user_id: user)).tap do |new_list|
+      copy_tasks(new_list)
+    end
+  end 
+   
+  private
+  def copy_tasks(new_list)
+    tasks.each do |task|
+      task.get_and_copy_task(new_list.id)
+    end
   end
 
   def copy_attributes
-  	self.attributes.slice('name', 'description')
+    attributes.slice('name', 'description')
   end
 
-  private
-
-    def generate_uuid
-      self.uuid ||= SecureRandom.uuid
-    end
+  def generate_uuid
+    self.uuid ||= SecureRandom.uuid
+  end
 end
