@@ -16,7 +16,7 @@ describe ListsController do
 
 	describe "POST create" do
 
-		it "shows the list for given id" do
+		it "creates new list based on params values" do
 			post :create,  list: valid_attributes
 			expect(controller.list.name).to eq 'MyList'
 		end
@@ -27,4 +27,11 @@ describe ListsController do
 		end
 	end
 
+	describe "copy_and_paste" do
+		let!(:my_list) { user.lists.create(valid_attributes) }
+
+		it "should save proper list" do
+			expect { post :copy_and_paste, id: my_list.id }.to change(List, :count).by(1)
+		end
+	end
 end

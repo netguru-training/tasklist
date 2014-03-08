@@ -57,13 +57,14 @@ class ListsController < ApplicationController
 
   private
     def find_or_create_list
-      if params[:id]
+      list = 
+      if params[:id].present?
         current_user.lists.find(params[:id])
-      elsif params[:list]
-        current_user.lists.new(list_params)
       else
-        current_user.lists.new
+        current_user.lists.build 
       end
+      list.assign_attributes(list_params) if params[:list].present?
+      list
     end
 
     def list_params
