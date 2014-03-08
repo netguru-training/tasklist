@@ -5,4 +5,6 @@ class List
   
   field :name, type: String
   field :description, type: String
+
+  has_many :tasks
 end

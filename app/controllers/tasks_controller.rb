@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   expose(:lists) { List.all }
   expose(:list)
   expose(:tasks) { list.tasks }
-  expose(:task, attributes: :taks_params)
+  expose(:task, attributes: :task_params)
 
   def index
   end

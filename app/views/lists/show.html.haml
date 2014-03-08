@@ -7,6 +7,13 @@
   %b Description:
   = list.description
 
+%h3
+  Tasks
+%small
+  = link_to "new task", new_list_task_path(list)
+= render 'tasks/tasks'
+%br
+
 = link_to 'Edit', edit_list_path(list)
 \|
 = link_to 'Back', lists_path

@@ -1,6 +1,4 @@
 %h2 New task
 = simple_form_for [list, task] do |f|
-  = f.label :completion do 
-    = f.checkbox :completion
   = f.input :description, as: :string
   = f.button :submit

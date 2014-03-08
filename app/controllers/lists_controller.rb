@@ -3,6 +3,7 @@ class ListsController < ApplicationController
   expose(:lists) { List.all }
   expose(:list, attributes: :list_params)
   expose(:tags) { List.tags_with_weight }
+  expose(:tasks)
 
   # GET /lists
   def index
