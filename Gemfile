@@ -9,6 +9,7 @@ gem 'simple_form'
 gem 'decent_exposure'
 gem 'decent_decoration'
 gem 'sass-rails'
+gem 'omniauth'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -35,8 +36,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'guard-rspec'
-  gem 'zeus'
   gem 'factory_girl_rails'
   gem 'pry'
 end
@@ -47,6 +46,6 @@ group :test do
   gem 'shoulda-matchers'
 end
 
-group: :production do
+group :production do
   gem 'rails_12factor'
 end
