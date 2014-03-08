@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   expose(:lists) { current_user.lists }
   expose(:list) { find_or_create_list }
   expose(:tags) { List.tags_with_weight }
-  expose(:tasks)
+  expose_decorated(:tasks) { list.tasks.decorate }
 
   # GET /lists
   def index
