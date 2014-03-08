@@ -36,6 +36,13 @@ class TasksController < ApplicationController
   def show
   end
 
+  def complete
+    task = Task.find(params[:id])
+    task.completion = true
+    task.save
+    redirect_to task.list, notice: 'Task marked as completed'
+  end
+
   private
 
     def task_params
