@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
-  expose(:lists) { List.all }
-  expose(:list)
+  expose(:list) { current_user.lists.find(params[:list_id]) }
   expose(:tasks) { list.tasks }
   expose(:task, attributes: :task_params)
 
