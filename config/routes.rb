@@ -13,6 +13,8 @@ Tasklist::Application.routes.draw do
     end
   end
 
+  resources :shares, only: [:create]
+
   get "/auth/:provider/callback" => "sessions#create"
   get "/login" => "sessions#login"
   get "/logout" => "sessions#destroy", :as => :logout

@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   respond_to(:html)
-  
+
   expose(:list_to_copy) { List.find(params[:id])}
   expose(:lists) { current_user.lists }
   expose(:list) { find_or_create_list }
@@ -45,6 +45,14 @@ class ListsController < ApplicationController
   def copy_and_paste
     new_list = list_to_copy.copied_list(current_user._id)
     redirect_to new_list
+  end
+
+  def share_link
+    url = root_url + 'share/' + list.uuid
+    respond_to do |format|
+      format.html
+      format.json { respond_with { text: url } }
+    end
   end
 
   private

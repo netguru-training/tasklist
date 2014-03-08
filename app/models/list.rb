@@ -3,8 +3,11 @@ class List
   include Mongoid::Timestamps
   include Mongoid::Taggable
 
+  before_save :generate_uuid
+
   field :name, type: String
   field :description, type: String
+  field :uuid, type: String
 
   validates_presence_of :name
 
@@ -16,9 +19,9 @@ class List
     new_list = List.create(self.copy_attributes.merge(user_id: user))
     new_list.tasks = self.copy_tasks
     new_list
-  end	
-   
-  
+  end
+
+
   def copy_tasks
   	new_tasks = []
   	tasks.each do |task|
@@ -30,4 +33,10 @@ class List
   def copy_attributes
   	self.attributes.slice('name', 'description')
   end
+
+  private
+
+    def generate_uuid
+      self.uuid ||= SecureRandom.uuid
+    end
 end
