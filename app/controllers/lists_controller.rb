@@ -61,18 +61,17 @@ class ListsController < ApplicationController
   def share_link
     url = root_url + 'share/' + list.uuid
     respond_to do |format|
-      format.html
-      format.json { respond_with text: url }
+      format.json { render :json => {:url => url } }
     end
   end
 
   private
     def find_or_create_list
-      list = 
+      list =
       if params[:id].present?
         current_user.lists.find(params[:id])
       else
-        current_user.lists.build 
+        current_user.lists.build
       end
       list.assign_attributes(list_params) if params[:list].present?
       list

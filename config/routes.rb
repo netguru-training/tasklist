@@ -9,6 +9,7 @@ Tasklist::Application.routes.draw do
     end
 
     member do
+      get :share_link
       post :copy_and_paste
     end
   end
