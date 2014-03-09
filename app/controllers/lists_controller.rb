@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   respond_to(:html)
 
   expose(:list_to_copy) { List.find(params[:id])}
-  expose(:lists) { current_user.all_lists }
+  expose(:lists) { get_lists }
   expose(:list) { find_or_create_list }
   expose(:tags) { List.tags_with_weight }
   expose_decorated(:tasks) { list.tasks.decorate }
@@ -71,6 +71,12 @@ class ListsController < ApplicationController
     end
   end
 
+  def add_tag
+    session[:active_tags] ||= []
+    session[:active_tags].push(params[:tag_id])
+    redirect_to lists_path
+  end
+
   def copies
   end
 
@@ -88,5 +94,14 @@ class ListsController < ApplicationController
 
     def list_params
       params.require(:list).permit(:name, :description, :tags)
+    end
+
+    def get_lists
+      active_tags = session[:active_tags]
+      if active_tags
+        current_user.all_lists_tagged(active_tags)
+      else
+        current_user.all_lists
+      end
     end
 end

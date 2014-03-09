@@ -11,9 +11,10 @@ Tasklist::Application.routes.draw do
     member do
       get :share_link
       post :copy_and_paste
+      post :add_tag
     end
   end
- 
+
   get '/share/:uuid' => 'shares#create'
   get 'copies/:id' => 'lists#copies', as: :copies
 

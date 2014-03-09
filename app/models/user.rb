@@ -11,6 +11,10 @@ class User
     shared = shared_lists.concat(self.lists)
   end
 
+  def all_lists_tagged(tag_list)
+    all_lists.select { |list|  (list.tags & tag_list).empty? }
+  end
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.uid = auth["uid"]
