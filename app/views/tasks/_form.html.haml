@@ -1,11 +1,10 @@
 .form-horizontal
   = form_for [list, list.tasks.build], remote: true do |f|
     = render 'layouts/errors', object: list.tasks.build
-    %div.form-group
-      = f.label :description, {class: "col-sm-2 control-label"}
-      %div.col-sm-10
+    %div.form-group.task
+      %div.col-sm-12
         = f.text_field :description, {class: "form-control"}
-    %div.form-group
+    %div.form-group.task
       %div.col-sm-offset-2.col-sm-10
         = f.submit 'Save', {class: "btn btn-default"}
 

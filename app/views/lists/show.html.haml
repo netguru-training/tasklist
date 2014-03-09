@@ -8,14 +8,16 @@
     Tasks:
 %div.task.right.col-md-10
   = render 'tasks/tasks'
-%hr.clear
-%br
+%div.clear
 
-%h4
-  Add new task:
-= render 'tasks/form'
 %br
+%div.task.left.col-md-2
+  %h4
+    Add new task:
+%div.task.right.col-md-10   
+  = render 'tasks/form'
 
+%div.clear
 = link_to 'Edit', edit_list_path(list)
 \|
 = link_to 'Back', lists_path
