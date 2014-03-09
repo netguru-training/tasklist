@@ -3,6 +3,6 @@ class ListDecorator < Draper::Decorator
   delegate_all
 
   def list_completed_class
-    completed ? 'list_completed' : 'list_uncompleted'
+    completed ? 'text-muted' : ''
   end
 end
