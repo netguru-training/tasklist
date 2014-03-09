@@ -13,6 +13,7 @@ gem 'omniauth'
 gem "omniauth-google-oauth2"
 gem 'draper'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'zeroclipboard-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
