@@ -52,7 +52,7 @@ class ListsController < ApplicationController
     else
       flash[:alert] = "There was an error!"
     end
-    redirect_to lists_path
+    redirect_to lists_path 
   end
 
   def copy_and_paste

@@ -1,9 +1,9 @@
 -provide :page_title, 'Your lists'
 = render partial: "share_popup"
+= render "tag_cloud"
 %ul.list-group
 - lists.each do |list|
   %li.list-group-item
     = render partial: 'lists/list_short', locals: { list: list }
-
 .row
   .col-md-12= link_to 'New List', new_list_path, class: 'btn btn-primary btn-lg btn-block'
