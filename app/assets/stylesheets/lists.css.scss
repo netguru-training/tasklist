@@ -6,8 +6,26 @@
   position: fixed;
   background-color: #eee;
   top: 50%;
-  left: 50%;
+  left: 30%;
   border: 1px solid #999;
   border-radius: 4px;
   padding: 10px;
+}
+.close_button {
+  background-color: #999;
+  position: absolute;
+  top: -10px;
+  left: 97%;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 0px 4px;
+  display: block;
+  cursor: pointer;
+  &:hover {
+    background-color: #aaa;
+  }
+}
+
+.link, .msg_body {
+  display: block;
 }

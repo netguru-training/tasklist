@@ -1,3 +1,7 @@
-- if logged_in?
-  = current_user.name
-  = link_to "Log out", logout_path
+%nav.navbar.navbar-default
+  .navbar-header
+    = link_to 'List it!', root_path, class: 'navbar-brand'
+  .navbar-right
+    - if logged_in?
+      = current_user.name
+      = link_to "Log out", logout_path

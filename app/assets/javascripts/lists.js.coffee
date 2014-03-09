@@ -1,8 +1,31 @@
+getPopup = -> $('#popup')
+
 showPopup = ->
-  $('#popup').removeClass('hidden')
+  getPopup().removeClass('hidden')
 
 hidePopup = ->
-  $('#popup').addClass('hidden')
+  getPopup().addClass('hidden')
 
-setMessage = (msg) ->
-  $('#popup').html(msg)
+setLink = (link) ->
+  getPopup().find('.link').html(link)
+
+showLink = (link) ->
+  setLink(link)
+  showPopup()
+
+fetchShareLink = (listId) ->
+  $.ajax("http://localhost:3000/lists/#{ listId }/share_link")
+
+handleShareClick = (e) ->
+  e.preventDefault()
+  listId = $(e.target).attr('data-list-id')
+  fetchShareLink(listId).then( (response) -> showLink(response.url) )
+
+attackCloseButtonHandler = ->
+  closeButton = getPopup().find('.close_button')
+  closeButton.on('click', hidePopup)
+
+$(->
+  $('[data-list-id]').on('click', handleShareClick)
+  attackCloseButtonHandler()
+)

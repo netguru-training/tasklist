@@ -56,7 +56,7 @@ class ListsController < ApplicationController
   end
 
   def copy_and_paste
-    if new_list.persisted? 
+    if new_list.persisted?
       flash[:notice] = "List was successfully copied."
     else
       flash[:alert] = "There was an error!"
@@ -65,10 +65,9 @@ class ListsController < ApplicationController
   end
 
   def share_link
-    url = root_url + 'share/' + list.uuid
+    url = "#{ root_url }shares/new?uuid=#{ list.uuid }"
     respond_to do |format|
-      format.html
-      format.json { respond_with text: url }
+      format.json { render :json => {:url => url } }
     end
   end
 
@@ -77,11 +76,11 @@ class ListsController < ApplicationController
 
   private
     def find_or_create_list
-      list = 
+      list =
       if params[:id].present?
         current_user.lists.find(params[:id])
       else
-        current_user.lists.build 
+        current_user.lists.build
       end
       list.assign_attributes(list_params) if params[:list].present?
       list
