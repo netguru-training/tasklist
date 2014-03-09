@@ -8,6 +8,9 @@
   %body
     = render "layouts/top_bar"
     .container
+      -if content_for?(:page_title)
+        .row
+          .page-title.col-md-12= yield(:page_title)
       .row
         .span12
           = render 'layouts/messages'

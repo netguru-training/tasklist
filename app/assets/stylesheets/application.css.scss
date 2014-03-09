@@ -1,6 +1,11 @@
 @import 'bootstrap';
-
 @import 'shares';
 @import 'lists';
 @import 'sessions';
 @import 'tasks';
+
+
+.page-title {
+  font-size: 1.3em;
+  display: block;
+}
