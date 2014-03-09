@@ -1,5 +1,5 @@
 Tags:
 - tags.each do |tag|
   %span.label.label-default
-    = link_to "#{tag[0]} (#{tag[1].to_i})", add_tag_lists_path, method: :post, tag_id: tag[0]
+    = link_to "#{tag[0]} (#{tag[1].to_i})", add_tag_lists_path(tag_id: tag[0]), method: :post
 
