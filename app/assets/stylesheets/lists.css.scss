@@ -12,20 +12,20 @@
   padding: 10px;
 }
 .close_button {
-  background-color: #999;
+  @extend .glyphicon, .glyphicon-remove;
+  opacity: 0.8;
   position: absolute;
-  top: -10px;
-  left: 97%;
-  border: 1px solid #eee;
-  border-radius: 5px;
-  padding: 0px 4px;
-  display: block;
+  top: 4px;
+  left: 96%;
   cursor: pointer;
   &:hover {
-    background-color: #aaa;
+    opacity: 1;
   }
 }
 
 .link, .msg_body {
   display: block;
+}
+
+.list-elem-title {
 }

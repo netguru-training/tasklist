@@ -1,1 +1,5 @@
-=button_to "Share", action: "create", uuid: uuid
+%div.question_msg
+  Do you want to add the list "#{list.name}" to your account?
+%div.question_box
+  =link_to "Yes", { action: "create", uuid: uuid }, class: "question_button"
+  =link_to "No", { controller: "lists", action: "index" }, class: "question_button"

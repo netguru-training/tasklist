@@ -1,3 +1,11 @@
-= simple_form_for [list, list.tasks.build], remote: true do |f|
-  = f.input :description, as: :string
-  = f.button :submit
+.form-horizontal
+  = simple_form_for [list, list.tasks.build] do |f|
+    = render 'layouts/errors', object: list.tasks.build
+    %div.form-group
+      = f.label :description, {class: "col-sm-2 control-label"}
+      %div.col-sm-10
+        = f.text_field :description, {class: "form-control"}
+    %div.form-group
+      %div.col-sm-offset-2.col-sm-10
+        = f.submit 'Save', {class: "btn btn-default"}
+
