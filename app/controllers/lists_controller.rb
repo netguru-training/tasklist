@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   respond_to(:html)
 
   expose(:list_to_copy) { List.find(params[:id])}
-  expose(:lists) { current_user.lists }
+  expose(:lists) { current_user.all_lists }
   expose(:list) { find_or_create_list }
   expose(:tags) { List.tags_with_weight }
   expose_decorated(:tasks) { list.tasks.decorate }

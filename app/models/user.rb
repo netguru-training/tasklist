@@ -8,7 +8,7 @@ class User
   has_many :shares
 
   def all_lists
-    shared = shared_lists
+    shared = shared_lists.concat(self.lists)
   end
 
   def self.create_with_omniauth(auth)
