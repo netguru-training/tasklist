@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   expose(:list) { current_user.lists.find(params[:list_id]) }
   expose(:tasks) { list.tasks }
-  expose(:task, attributes: :task_params)
+  expose_decorated(:task, attributes: :task_params)
 
   def index
   end
@@ -11,7 +11,11 @@ class TasksController < ApplicationController
 
   def create
     if task.save
-      redirect_to list
+      respond_to do |format|
+        format.html { redirect_to list }
+        format.js
+      end
+      
     else
       render :new
     end

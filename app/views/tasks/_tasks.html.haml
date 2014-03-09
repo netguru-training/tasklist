@@ -1,10 +1,2 @@
 - tasks.each do |task|
-  %div
-    %b Completion:
-    - if task.completion
-      = button_to "Un-Complete", uncomplete_list_task_path(list, task)
-    - else
-      = button_to "Completed", complete_list_task_path(list, task)
-  %span{class: "#{task.html_class}"}
-    %b Description:
-    = task.description
+  = render task
