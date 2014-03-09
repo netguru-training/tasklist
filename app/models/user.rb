@@ -12,7 +12,7 @@ class User
   end
 
   def all_lists_tagged(tag_list)
-    all_lists.select { |list| !(list.tags & tag_list).empty? }
+    all_lists.select { |list| !(list.tags_array & tag_list).empty? }
   end
 
   def self.create_with_omniauth(auth)
