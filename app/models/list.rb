@@ -21,18 +21,20 @@ class List
   default_scope -> {order_by(created_at: :desc)}
 
   def copied_list(user)
-    self.class.create(copy_attributes) do |new_list|
+    new_list = self.class.create(copy_attributes) do |new_list|
       new_list.original = self
       new_list.user = user
       new_list.name = "copy of (#{name})"
-      copy_tasks(new_list)
     end
+
+    copy_tasks(new_list)
+    new_list
   end
 
   def list_completed
     self.completed = !tasks.where(completion: false).any?
   end
-   
+
   private
   def copy_tasks(new_list)
     tasks.each do |task|
