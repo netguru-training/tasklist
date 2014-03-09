@@ -16,7 +16,7 @@ showLink = (link) ->
   showPopup()
 
 fetchShareLink = (listId) ->
-  $.ajax("http://localhost:3000/lists/#{ listId }/share_link")
+  $.ajax("/lists/#{ listId }/share_link")
 
 handleShareClick = (e) ->
   e.preventDefault()
