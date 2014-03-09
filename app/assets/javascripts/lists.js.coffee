@@ -24,6 +24,9 @@ handleShareClick = (e) ->
 handlePopupMsgClick = ->
   selectText('#popup .link')
 
+handleClipboardBtnClick = ->
+  debugger
+
 attachCloseButtonHandler = ->
   closeButton = getPopup().find('.close_button')
   closeButton.on('click', hidePopup)
@@ -48,6 +51,7 @@ selectText = (query) ->
 
 $(->
   $('[data-list-id]').on('click', handleShareClick)
+  new ZeroClipboard($('#clipboard_btn'))
   attachCloseButtonHandler()
   attachSelectPopupMsgHandler()
 )
