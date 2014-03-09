@@ -12,14 +12,16 @@ class List
   validates_presence_of :name
 
   belongs_to :user
-  belongs_to :original, class_name: "#{self.name}"
+  belongs_to :original, class_name: "#{self.name}", inverse_of: :copies
   has_many :shares
   has_many :tasks
+  has_many :copies, class_name: "#{self.name}", inverse_of: :original
 
   def copied_list(user)
     self.class.create(copy_attributes) do |new_list|
       new_list.original = self
       new_list.user = user
+      new_list.name = "copy of (#{name})"
       copy_tasks(new_list)
     end
   end 

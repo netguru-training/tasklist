@@ -27,8 +27,11 @@ class ListsController < ApplicationController
 
   # POST /lists
   def create
-    list.save
-    flash[:notice] = "List was successfully created."
+    if list.save
+      flash[:notice] = "List was successfully created."
+    else
+      flash[:alert] = "There was an error!"
+    end
     respond_with(list)
   end
 
@@ -44,8 +47,11 @@ class ListsController < ApplicationController
 
   # DELETE /lists/1
   def destroy
-    list.destroy
-    flash[:notice] = "List was successfully destroyed."
+    if list.destroy
+      flash[:notice] = "List was successfully destroyed."
+    else
+      flash[:alert] = "There was an error!"
+    end
     redirect_to lists_path
   end
 
@@ -64,6 +70,9 @@ class ListsController < ApplicationController
       format.html
       format.json { respond_with text: url }
     end
+  end
+
+  def copies
   end
 
   private
