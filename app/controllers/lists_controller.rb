@@ -50,7 +50,7 @@ class ListsController < ApplicationController
   end
 
   def copy_and_paste
-    if new_list.persisted? 
+    if new_list.persisted?
       flash[:notice] = "List was successfully copied."
     else
       flash[:alert] = "There was an error!"
@@ -59,7 +59,7 @@ class ListsController < ApplicationController
   end
 
   def share_link
-    url = root_url + 'share/' + list.uuid
+    url = "#{ root_url }shares/new?uuid=#{ list.uuid }"
     respond_to do |format|
       format.json { render :json => {:url => url } }
     end

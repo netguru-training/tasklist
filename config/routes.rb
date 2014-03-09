@@ -14,9 +14,7 @@ Tasklist::Application.routes.draw do
     end
   end
 
-  resources :shares, only: [:create]
-
-  get '/share/:uuid' => 'shares#create'
+  resources :shares, only: [:create, :new]
 
   get "/auth/:provider/callback" => "sessions#create"
   get "/login" => "sessions#login"
