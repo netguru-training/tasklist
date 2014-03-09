@@ -1,5 +1,4 @@
 Tags:
 - tags.each do |tag|
-  - cls = "active_tag" if session[:active_tags].include? tag[0]
-  %span.label.label-default{ class: cls }
+  %span.label.label-default{ class: tag_class(tag) }
     = link_to "#{tag[0]} (#{tag[1].to_i})", change_tag_lists_path(tag_id: tag[0]), method: :post
