@@ -13,13 +13,13 @@ showLink = (link) ->
   setLink(link)
   showPopup()
 
-fetchShareLink = ->
-  $.ajax('http://localhost:3000/lists/531c3d9e4d61635b60020000/share_link')
+fetchShareLink = (listId) ->
+  $.ajax("http://localhost:3000/lists/#{ listId }/share_link")
 
 handleShareClick = (e) ->
   e.preventDefault()
   listId = $(e.target).attr('data-list-id')
-  fetchShareLink().then( (response) -> showLink(response.url) )
+  fetchShareLink(listId).then( (response) -> showLink(response.url) )
 
 attackCloseButtonHandler = ->
   closeButton = getPopup().find('.close_button')
