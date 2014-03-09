@@ -1,8 +1,25 @@
+getPopup = -> $('#popup')
+
 showPopup = ->
-  $('#popup').removeClass('hidden')
+  getPopup().removeClass('hidden')
 
 hidePopup = ->
-  $('#popup').addClass('hidden')
+  getPopup().addClass('hidden')
 
 setMessage = (msg) ->
-  $('#popup').html(msg)
+  getPopup().find('.msg').html(msg)
+
+handleShareClick = (e) ->
+  e.preventDefault()
+  listId = $(e.target).attr('data-list-id')
+  setMessage(listId)
+  showPopup()
+
+attackCloseButtonHandler = ->
+  closeButton = getPopup().find('.close_button')
+  closeButton.on('click', hidePopup)
+
+$(->
+  $('[data-list-id]').on('click', handleShareClick)
+  attackCloseButtonHandler()
+)
