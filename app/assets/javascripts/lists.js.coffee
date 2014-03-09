@@ -7,7 +7,7 @@ hidePopup = ->
   getPopup().addClass('hidden')
 
 setLink = (link) ->
-  getPopup().find('.link').attr('href', link)
+  getPopup().find('.link').html(link)
 
 showLink = (link) ->
   setLink(link)
