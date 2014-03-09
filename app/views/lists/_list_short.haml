@@ -1,8 +1,9 @@
+%div{class: "#{list.list_completed_class}"}
+  %h1.list-elem-title= list.name
+  %p.list-elem-description= list.description
 
-%h1.list-elem-title= list.name
-%p.list-elem-description= list.description
+  = link_to 'Show', list, class: 'btn btn-primary btn-xs'
+  = link_to 'Edit', edit_list_path(list), class: 'btn btn-primary btn-xs'
+  = link_to 'Destroy', list, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-primary btn-xs'
+  = link_to 'Share', "#", :data => { :list_id => list.id.to_str }, class: 'btn btn-primary btn-xs'
 
-= link_to 'Show', list, class: 'btn btn-primary btn-xs'
-= link_to 'Edit', edit_list_path(list), class: 'btn btn-primary btn-xs'
-= link_to 'Destroy', list, :method => :delete,:data => { :confirm => 'Are you sure?' },  class: 'btn btn-primary btn-xs'
-= link_to 'Share', "#", :data => { :list_id => list.id.to_str }, class: 'btn btn-primary btn-xs'

@@ -8,6 +8,7 @@ class List
   field :name, type: String
   field :description, type: String
   field :uuid, type: String
+  field :completed, type: Mongoid::Boolean, default: false
 
   validates_presence_of :name
 
@@ -17,6 +18,8 @@ class List
   has_many :tasks
   has_many :copies, class_name: "#{self.name}", inverse_of: :original
 
+  default_scope -> {order_by(created_at: :desc)}
+
   def copied_list(user)
     self.class.create(copy_attributes) do |new_list|
       new_list.original = self
@@ -24,7 +27,11 @@ class List
       new_list.name = "copy of (#{name})"
       copy_tasks(new_list)
     end
-  end 
+  end
+
+  def list_completed
+    self.completed = !tasks.where(completion: false).any?
+  end
    
   private
   def copy_tasks(new_list)
