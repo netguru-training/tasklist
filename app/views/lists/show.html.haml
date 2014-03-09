@@ -9,9 +9,10 @@
 
 %h3
   Tasks
-%small
-  = link_to "new task", new_list_task_path(list)
 = render 'tasks/tasks'
+%h4
+  Add new task:
+= render 'tasks/form'
 %br
 
 = link_to 'Edit', edit_list_path(list)
