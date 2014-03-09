@@ -52,7 +52,7 @@ class ListsController < ApplicationController
     else
       flash[:alert] = "There was an error!"
     end
-    redirect_to lists_path 
+    redirect_to lists_path
   end
 
   def copy_and_paste
@@ -73,7 +73,7 @@ class ListsController < ApplicationController
 
   def add_tag
     session[:active_tags] ||= []
-    session[:active_tags].push(params[:tag_id])
+    session[:active_tags].push(params[:tag_id]) if params[:tag_id]
     redirect_to lists_path
   end
 
@@ -98,7 +98,7 @@ class ListsController < ApplicationController
 
     def get_lists
       active_tags = session[:active_tags]
-      if active_tags
+      if active_tags and not active_tags.empty?
         current_user.all_lists_tagged(active_tags)
       else
         current_user.all_lists
