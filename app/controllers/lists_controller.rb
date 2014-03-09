@@ -94,7 +94,7 @@ class ListsController < ApplicationController
     def find_or_create_list
       list =
       if params[:id].present?
-        current_user.lists.find(params[:id])
+        List.find(params[:id])
       else
         current_user.lists.build
       end
