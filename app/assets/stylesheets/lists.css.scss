@@ -13,10 +13,14 @@
 }
 .close_button {
   @extend .glyphicon, .glyphicon-remove;
+  opacity: 0.8;
   position: absolute;
   top: 4px;
   left: 96%;
   cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .link, .msg_body {
