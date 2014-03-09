@@ -1,7 +1,10 @@
 %nav.navbar.navbar-default
-  .navbar-header
-    = link_to 'List it!', root_path, class: 'navbar-brand'
-  .navbar-right
-    - if logged_in?
-      = current_user.name
-      = link_to "Log out", logout_path
+  .container
+    .navbar-header
+      = link_to 'List it!', root_path, class: 'navbar-brand'
+    %ul.nav.navbar-nav.navbar-right
+      - if logged_in?
+        %li.navbar-text
+          .user-name= current_user.name
+        %li
+          = link_to "Log out", logout_path
