@@ -31,7 +31,10 @@ handleClipboardBtnClick = ->
 
 attachCloseButtonHandler = ->
   closeButton = getPopup().find('.close_button')
-  closeButton.on('click', hidePopup)
+  closeButton.on('click', ->
+    hidePopup()
+    getClipBtn().html('Click me to copy the link')
+  )
 
 attachSelectPopupMsgHandler = ->
   getPopup().find('.msg').on('click', handlePopupMsgClick)
