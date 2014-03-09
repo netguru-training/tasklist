@@ -12,11 +12,14 @@ class List
   validates_presence_of :name
 
   belongs_to :user
+  belongs_to :original, class_name: "#{self.name}"
   has_many :shares
   has_many :tasks
 
   def copied_list(user)
-    List.create(copy_attributes.merge(user_id: user)).tap do |new_list|
+    self.class.create(copy_attributes) do |new_list|
+      new_list.original = self
+      new_list.user = user
       copy_tasks(new_list)
     end
   end 

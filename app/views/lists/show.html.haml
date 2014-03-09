@@ -19,3 +19,6 @@
 = link_to 'Back', lists_path
 \|
 = link_to "Copy list", copy_and_paste_list_path(list), method: :post
+\|
+- if list.original.present?
+  = link_to "Original list", list_path(list.original)

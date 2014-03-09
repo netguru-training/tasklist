@@ -6,6 +6,7 @@ class ListsController < ApplicationController
   expose(:list) { find_or_create_list }
   expose(:tags) { List.tags_with_weight }
   expose_decorated(:tasks) { list.tasks.decorate }
+  expose(:new_list) { list_to_copy.copied_list(current_user) }
 
   # GET /lists
   def index
@@ -33,8 +34,11 @@ class ListsController < ApplicationController
 
   # PATCH/PUT /lists/1
   def update
-    list.save
-    flash[:notice] = "List was successfully updated."
+    if list.save
+      flash[:notice] = "List was successfully updated."
+    else
+      flash[:alert] = "There was an error!"
+    end
     respond_with(list)
   end
 
@@ -42,12 +46,15 @@ class ListsController < ApplicationController
   def destroy
     list.destroy
     flash[:notice] = "List was successfully destroyed."
-    respond_with(list)
+    redirect_to lists_path
   end
 
   def copy_and_paste
-    new_list = list_to_copy.copied_list(current_user._id)
-    flash[:notice] = "List was successfully copied."
+    if new_list.persisted? 
+      flash[:notice] = "List was successfully copied."
+    else
+      flash[:alert] = "There was an error!"
+    end
     redirect_to new_list
   end
 
