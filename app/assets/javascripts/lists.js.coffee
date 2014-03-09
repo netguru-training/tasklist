@@ -1,5 +1,7 @@
 getPopup = -> $('#popup')
 
+getClipBtn = -> $('#clipboard_btn')
+
 showPopup = ->
   getPopup().removeClass('hidden')
 
@@ -25,7 +27,7 @@ handlePopupMsgClick = ->
   selectText('#popup .link')
 
 handleClipboardBtnClick = ->
-  $('#clipboard_btn').html('Copied!')
+  getClipBtn().html('Copied!')
 
 attachCloseButtonHandler = ->
   closeButton = getPopup().find('.close_button')
@@ -54,7 +56,7 @@ selectText = (query) ->
 
 $(->
   $('[data-list-id]').on('click', handleShareClick)
-  clip = new ZeroClipboard($('#clipboard_btn'))
+  clip = new ZeroClipboard(getClipBtn())
   attachCloseButtonHandler()
   attachSelectPopupMsgHandler()
   attachClipboardSelectHanlder(clip)
