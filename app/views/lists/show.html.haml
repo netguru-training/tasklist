@@ -1,16 +1,16 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = list.name
-%p
-  %b Description:
+%h2.text-info
+  = list.name.titleize
+%h4.text-muted
   = list.description
 
-%h3
-  Tasks
-%div{ id: "tasks" }
+%div.task.left.col-md-2
+  %h4
+    Tasks:
+%div.task.right.col-md-10
   = render 'tasks/tasks'
+%hr.clear
+%br
+
 %h4
   Add new task:
 = render 'tasks/form'

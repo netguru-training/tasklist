@@ -9,3 +9,19 @@
 .uncompleted {
 	text-decoration: none;
 }
+
+.task form {
+  display: inline-block;
+}
+
+.task.left {
+  float: left;
+}
+
+.task.right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}

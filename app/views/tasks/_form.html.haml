@@ -1,5 +1,5 @@
 .form-horizontal
-  = simple_form_for [list, list.tasks.build] do |f|
+  = form_for [list, list.tasks.build] do |f|
     = render 'layouts/errors', object: list.tasks.build
     %div.form-group
       = f.label :description, {class: "col-sm-2 control-label"}
