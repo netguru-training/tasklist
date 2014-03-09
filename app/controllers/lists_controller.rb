@@ -71,9 +71,18 @@ class ListsController < ApplicationController
     end
   end
 
-  def add_tag
+  def change_tag
     session[:active_tags] ||= []
-    session[:active_tags].push(params[:tag_id]) if params[:tag_id]
+    active_tags = session[:active_tags]
+    tag_id = params[:tag_id]
+    if tag_id
+      if active_tags.include? tag_id
+        active_tags.delete tag_id
+      else
+        session[:active_tags].push(params[:tag_id])
+      end
+    end
+    session[:active_tags] = active_tags
     redirect_to lists_path
   end
 

@@ -12,15 +12,15 @@ Tasklist::Application.routes.draw do
       get :share_link
       post :copy_and_paste
     end
-    collection do 
-      post :add_tag
+    collection do
+      post :change_tag
     end
   end
 
   #post '/lists/add_tag' => 'lists#add_tag'
   get '/share/:uuid' => 'shares#create'
   get '/copies/:id' => 'lists#copies', as: :copies
-  
+
   resources :shares, only: [:create, :new]
 
   get "/auth/:provider/callback" => "sessions#create"
