@@ -23,7 +23,7 @@ class TasksController < ApplicationController
 
   def update
     if task.save
-      redirect_to task.list, notice: 'Task was successfully added to the list'
+      redirect_to task.list, notice: 'Task was successfully updated to the list'
     else
       render :edit
     end
