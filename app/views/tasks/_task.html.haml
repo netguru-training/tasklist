@@ -1,9 +1,13 @@
 %div.task
+  = button_to list_task_path(list, task), method: :delete, class: "btn btn-default btn-sm" do
+    %span.glyphicon.glyphicon-trash  
   - if task.completion
-    = button_to uncomplete_list_task_path(list, task), {class: "btn btn-default btn-sm"} do
-      %span.glyphicon.glyphicon-unchecked
+    = button_to uncomplete_list_task_path(list, task), class: "btn btn-default btn-sm" do
+      %span.glyphicon.glyphicon-ok
   - else
-    = button_to complete_list_task_path(list, task), {class: "btn btn-default btn-sm"} do
-      %span.glyphicon.glyphicon-check
+    = button_to complete_list_task_path(list, task), class: "btn btn-default btn-sm" do
+      %span.glyphicon.glyphicon-unchecked
   %span{class: "#{task.html_class}"}
     = task.description
+
+

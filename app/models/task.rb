@@ -3,6 +3,7 @@ class Task
   include Mongoid::Timestamps
 
   after_save :check_list_completed
+  after_destroy :check_list_completed
 
   field :completion, type: Mongoid::Boolean, default: false
   field :description, type: String

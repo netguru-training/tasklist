@@ -34,6 +34,7 @@ class TasksController < ApplicationController
 
   def destroy
     task.destroy
+    redirect_to task.list, notice: 'Task was successfully deleted'
   end
 
   def show
