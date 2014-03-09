@@ -1,4 +1,6 @@
 %div.task
+  = button_to edit_list_task_path(list, task), method: :get, class: "btn btn-default btn-sm" do
+    %span.glyphicon.glyphicon-edit
   = button_to list_task_path(list, task), method: :delete, class: "btn btn-default btn-sm" do
     %span.glyphicon.glyphicon-trash  
   - if task.completion

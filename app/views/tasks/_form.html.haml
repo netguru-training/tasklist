@@ -1,6 +1,6 @@
 .form-horizontal
-  = form_for [list, list.tasks.build], remote: true do |f|
-    = render 'layouts/errors', object: list.tasks.build
+  = form_for [list, task], remote: task.new_record? do |f|
+    = render 'layouts/errors', object: task
     %div.form-group.task
       %div.col-sm-12
         = f.text_field :description, {class: "form-control"}
