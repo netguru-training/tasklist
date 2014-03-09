@@ -25,7 +25,7 @@ handlePopupMsgClick = ->
   selectText('#popup .link')
 
 handleClipboardBtnClick = ->
-  debugger
+  $('#clipboard_btn').html('Copied!')
 
 attachCloseButtonHandler = ->
   closeButton = getPopup().find('.close_button')
@@ -33,6 +33,9 @@ attachCloseButtonHandler = ->
 
 attachSelectPopupMsgHandler = ->
   getPopup().find('.msg').on('click', handlePopupMsgClick)
+
+attachClipboardSelectHanlder = (clip) ->
+  clip.on('complete', handleClipboardBtnClick)
 
 selectText = (query) ->
   doc = document
@@ -51,7 +54,8 @@ selectText = (query) ->
 
 $(->
   $('[data-list-id]').on('click', handleShareClick)
-  new ZeroClipboard($('#clipboard_btn'))
+  clip = new ZeroClipboard($('#clipboard_btn'))
   attachCloseButtonHandler()
   attachSelectPopupMsgHandler()
+  attachClipboardSelectHanlder(clip)
 )
