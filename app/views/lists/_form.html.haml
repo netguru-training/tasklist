@@ -1,19 +1,18 @@
-= form_for list do |f|
-  - if list.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@list.errors.count, "error")} prohibited this list from being saved:"
-      %ul
-        - list.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_field :description
-  .field
-    = f.label :tags
-    = f.text_field :tags
-  .actions
-    = f.submit 'Save'
+.form-horizontal
+  = form_for list do |f|
+    = render 'layouts/errors', object: list
+    %div.form-group
+      = f.label :name, {class: "col-sm-2 control-label"}
+      %div.col-sm-10
+        = f.text_field :name, {class: "form-control"}
+    %div.form-group
+      = f.label :description, {class: "col-sm-2 control-label"}
+      %div.col-sm-10
+        = f.text_field :description, {class: "form-control"}
+    %div.form-group
+      = f.label :tags, {class: "col-sm-2 control-label"}
+      %div.col-sm-10
+        = f.text_field :tags, {class: "form-control"}
+    %div.form-group
+      %div.col-sm-offset-2.col-sm-10
+        = f.submit 'Save', {class: "btn btn-default"}
