@@ -21,11 +21,33 @@ handleShareClick = (e) ->
   listId = $(e.target).attr('data-list-id')
   fetchShareLink(listId).then( (response) -> showLink(response.url) )
 
-attackCloseButtonHandler = ->
+handlePopupMsgClick = ->
+  selectText('#popup .link')
+
+attachCloseButtonHandler = ->
   closeButton = getPopup().find('.close_button')
   closeButton.on('click', hidePopup)
 
+attachSelectPopupMsgHandler = ->
+  getPopup().find('.msg').on('click', handlePopupMsgClick)
+
+selectText = (query) ->
+  doc = document
+  text = $(query)[0]
+
+  if doc.body.createTextRange # IE
+    range = doc.body.createTextRange()
+    range.moveToElementText(text)
+    range.select()
+  else if window.getSelection # rest
+    selection = window.getSelection()
+    range = doc.createRange()
+    range.selectNodeContents(text)
+    selection.removeAllRanges()
+    selection.addRange(range)
+
 $(->
   $('[data-list-id]').on('click', handleShareClick)
-  attackCloseButtonHandler()
+  attachCloseButtonHandler()
+  attachSelectPopupMsgHandler()
 )
